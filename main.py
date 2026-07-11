@@ -1,0 +1,7 @@
+from fastapi import FastAPI  # pyright: ignore[reportMissingImports]
+
+from app.routes.issues import router as issues_router
+from app.middleware.timer import timer_middleware
+app = FastAPI()
+app.middleware("http")(timer_middleware)
+app.include_router(issues_router)
