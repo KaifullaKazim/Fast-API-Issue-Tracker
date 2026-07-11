@@ -75,7 +75,7 @@ def IssueDelete(issue_id: str):
             issues.remove(issue)
             save_data(issues)
             return issue
-    #raise HTTPException(status_code=404, detail="Issue not found")
+    raise HTTPException(status_code=404, detail="Issue not found")
 
 
 @router.get('/{issue_id}',response_model=IssueOut)
@@ -101,22 +101,6 @@ def Batch__Create_operation(payload: Batch_Issue_Create):
         save_data(issues)
     return new_issue
 
-
-# batch update operation
-@router.put('/Batch_updation')
-async def Batch_put_Operation(payload:Batch_Issue_Update):
-    issues=load_data()
-    for d in payload.issues:
-        for issue in issues:
-            if issue["id"]==d.id:
-                issue["title"] = d.title
-                issue["description"] = d.description
-                issue["status"] = d.status
-                issue["priority"] = d.priority
-                break            
-    save_data(issues)
-    return "done"
-    
 
 
     
