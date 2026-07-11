@@ -29,7 +29,8 @@ def create_issue(payload: IssueCreate):
     save_data(issues)
     return new_issue
 
-@router.put('/Batch_updation')
+# Batch update operation
+@router.put('/Batch')
 async def Batch_put_Operation(payload:Batch_Issue_Update):
     issues=load_data()
     updated,l=0,[]
@@ -47,12 +48,11 @@ async def Batch_put_Operation(payload:Batch_Issue_Update):
         else:
             updated=0
     save_data(issues)
-    return "Ids were not found for the followinf ids",l
+    return "couldn't update issues for the following ids",l
 
 
 @router.put('/{issue_id}', response_model=IssueOut)
 def update_issue(issue_id: str, payload: IssueUpdate, status_code=status.HTTP_404_NOT_FOUND):
-    
     issues = load_data()
     for issue in issues:
         if issue["id"] == issue_id:
@@ -86,7 +86,7 @@ def get_single_issue(issue_id):
             return d
         
 # batch create operation
-@router.post('/Batch_Create', response_model=IssueOut, status_code=status.HTTP_201_CREATED)
+@router.post('/Batch', response_model=IssueOut, status_code=status.HTTP_201_CREATED)
 def Batch__Create_operation(payload: Batch_Issue_Create):
     issues=load_data()
     for d in payload.issues:
