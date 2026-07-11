@@ -155,6 +155,15 @@ GET /api/v1/issues/7fa8...
 
 ------------------------------------------------------------------------
 
+------------------------------------------------------------------------
+
+## DELETE /api/v1/issues/{issue_id}
+
+Deletes the specified issue from the JSON storage and returns the
+deleted object.
+
+------------------------------------------------------------------------
+
 ## Batch Create
 
 ```json
