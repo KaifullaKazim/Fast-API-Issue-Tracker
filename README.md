@@ -152,8 +152,24 @@ Returns a single issue matching the UUID.
 ``` http
 GET /api/v1/issues/7fa8...
 ```
+A UUID is automatically generated and the status defaults to `open`.
 
+------------------------------------------------------------------------
 
+## PUT /api/v1/issues/{issue_id}
+
+Updates an existing issue.
+
+Example:
+
+``` json
+{
+  "title":"Updated Login Bug",
+  "description":"Fixed OAuth",
+  "status":"closed",
+  "priority":"medium"
+}
+```
 ------------------------------------------------------------------------
 
 ## DELETE /api/v1/issues/{issue_id}
