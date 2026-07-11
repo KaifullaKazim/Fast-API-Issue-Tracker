@@ -152,6 +152,7 @@ Returns a single issue matching the UUID.
 ``` http
 GET /api/v1/issues/7fa8...
 ```
+-----------------------------------------------------------------------
 A UUID is automatically generated and the status defaults to `open`.
 
 ------------------------------------------------------------------------
