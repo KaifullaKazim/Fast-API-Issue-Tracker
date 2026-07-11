@@ -1,157 +1,139 @@
-
-
-
 # 🚀 FastAPI Issue Tracker API
 
-A lightweight **Issue Tracking REST API** built with **FastAPI** to practice backend development concepts including CRUD operations, Batch Processing, Request Validation, Middleware, and File-Based Persistence.
+<div align="center">
 
-This project demonstrates how to build a structured REST API using FastAPI while following clean project organization and Pydantic schema validation.
+![Python](https://img.shields.io/badge/Python-3.12+-3776AB?style=for-the-badge\&logo=python\&logoColor=white)
+![FastAPI](https://img.shields.io/badge/FastAPI-0.116+-009688?style=for-the-badge\&logo=fastapi\&logoColor=white)
+![Pydantic](https://img.shields.io/badge/Pydantic-Validation-E92063?style=for-the-badge)
+![Render](https://img.shields.io/badge/Hosted%20on-Render-46E3B7?style=for-the-badge\&logo=render\&logoColor=white)
+![REST API](https://img.shields.io/badge/API-REST-blue?style=for-the-badge)
+
+**A RESTful Issue Tracker built using FastAPI demonstrating CRUD operations, Batch Processing, Middleware, Request Validation, and JSON-based data persistence.**
+
+</div>
 
 ---
 
-## 📌 Features
+## 🌐 Live Demo
+
+🚀 **Live API**
+
+https://fast-api-issue-tracker-1.onrender.com
+
+📖 **Swagger Documentation**
+
+https://fast-api-issue-tracker-1.onrender.com/docs
+
+📚 **ReDoc Documentation**
+
+https://fast-api-issue-tracker-1.onrender.com/redoc
+
+💻 **GitHub Repository**
+
+https://github.com/KaifullaKazim/Fast-API-Issue-Tracker
+
+---
+
+# ✨ Features
 
 * ✅ Complete CRUD Operations
-* ✅ Batch Create Issues
-* ✅ Batch Update Issues
+* ✅ Batch Create API
+* ✅ Batch Update API
 * ✅ UUID-based Issue IDs
-* ✅ Request Validation using Pydantic
-* ✅ Custom Middleware for Request Processing Time
-* ✅ JSON File Storage (No Database Required)
-* ✅ Automatic Interactive API Documentation
-* ✅ Clean Modular Project Structure
+* ✅ Pydantic Request Validation
+* ✅ Enum Validation
+* ✅ Automatic OpenAPI Documentation
+* ✅ Interactive Swagger UI
+* ✅ ReDoc Documentation
+* ✅ Custom Middleware
+* ✅ JSON File Persistence
+* ✅ Modular Project Structure
 
 ---
 
-## 🛠️ Tech Stack
+# 🛠 Tech Stack
 
-| Technology | Purpose            |
-| ---------- | ------------------ |
-| FastAPI    | REST API Framework |
-| Python     | Backend Language   |
-| Pydantic   | Data Validation    |
-| UUID       | Unique Issue IDs   |
-| JSON       | Data Persistence   |
-| Uvicorn    | ASGI Server        |
+| Technology | Purpose                       |
+| ---------- | ----------------------------- |
+| Python     | Backend Development           |
+| FastAPI    | REST API Framework            |
+| Pydantic   | Request & Response Validation |
+| Uvicorn    | ASGI Server                   |
+| JSON       | Lightweight Data Storage      |
+| UUID       | Unique Issue Identification   |
+| Render     | Cloud Deployment              |
 
 ---
 
-# 📂 Project Structure
+# 📁 Project Structure
 
 ```text
-Fast-API-Issue-Tracker/
+Fast-API-Issue-Tracker
 │
-├── app/
-│   ├── middleware/
+├── app
+│   ├── middleware
 │   │   └── timer.py
 │   │
-│   ├── routes/
+│   ├── routes
 │   │   └── issues.py
 │   │
 │   ├── schemas.py
-│   ├── storage.py
-│   └── main.py
+│   └── storage.py
 │
-├── data/
+├── data
 │   └── issues.json
 │
+├── main.py
 ├── requirements.txt
 └── README.md
 ```
 
 ---
 
-# 📚 API Endpoints
+# 🚀 API Endpoints
 
-## Retrieve All Issues
-
-```http
-GET /api/v1/issues/
-```
-
-Returns every issue stored in the JSON database.
-
----
-
-## Retrieve Single Issue
-
-```http
-GET /api/v1/issues/{issue_id}
-```
-
-Returns a specific issue using its UUID.
+| Method | Endpoint                    | Description              |
+| ------ | --------------------------- | ------------------------ |
+| GET    | `/api/v1/issues/`           | Retrieve all issues      |
+| GET    | `/api/v1/issues/{issue_id}` | Retrieve a single issue  |
+| POST   | `/api/v1/issues/`           | Create a new issue       |
+| PUT    | `/api/v1/issues/{issue_id}` | Update an existing issue |
+| DELETE | `/api/v1/issues/{issue_id}` | Delete an issue          |
+| POST   | `/api/v1/issues/Batch`      | Batch Create Issues      |
+| PUT    | `/api/v1/issues/Batch`      | Batch Update Issues      |
 
 ---
+
+# 📝 Sample Request
 
 ## Create Issue
 
-```http
-POST /api/v1/issues/
-```
-
-Example Request
-
 ```json
 {
-  "title": "Login Bug",
-  "description": "Unable to login using Google",
-  "priority": "high"
+    "title": "Login Issue",
+    "description": "Unable to login using Google",
+    "priority": "high"
 }
 ```
 
 ---
-
-## Update Issue
-
-```http
-PUT /api/v1/issues/{issue_id}
-```
-
-Example Request
-
-```json
-{
-  "title": "Updated Login Bug",
-  "description": "OAuth token expired"
-}
-```
-
----
-
-## Delete Issue
-
-```http
-DELETE /api/v1/issues/{issue_id}
-```
-
-Deletes an issue from storage.
-
----
-
-# 🚀 Batch Operations
 
 ## Batch Create
 
-```http
-POST /api/v1/issues/Batch_Create
-```
-
-Example
-
 ```json
 {
-  "issues": [
-    {
-      "title": "Issue 1",
-      "description": "Description 1",
-      "priority": "medium"
-    },
-    {
-      "title": "Issue 2",
-      "description": "Description 2",
-      "priority": "high"
-    }
-  ]
+    "issues": [
+        {
+            "title": "Issue 1",
+            "description": "Description",
+            "priority": "medium"
+        },
+        {
+            "title": "Issue 2",
+            "description": "Description",
+            "priority": "high"
+        }
+    ]
 }
 ```
 
@@ -159,72 +141,59 @@ Example
 
 ## Batch Update
 
-```http
-PUT /api/v1/issues/Batch_updation
-```
-
-Example
-
 ```json
 {
-  "issues": [
-    {
-      "id": "issue-id-1",
-      "title": "Updated Title",
-      "description": "Updated Description",
-      "status": "closed",
-      "priority": "high"
-    },
-    {
-      "id": "issue-id-2",
-      "title": "Another Update",
-      "description": "Updated Again",
-      "status": "in_progress",
-      "priority": "medium"
-    }
-  ]
+    "issues": [
+        {
+            "id": "UUID",
+            "title": "Updated Issue",
+            "description": "Updated Description",
+            "status": "closed",
+            "priority": "high"
+        }
+    ]
 }
 ```
 
 ---
 
-# 📋 Issue Model
+# 📦 Issue Model
 
 ```json
 {
-  "id": "UUID",
-  "title": "Issue Title",
-  "description": "Issue Description",
-  "status": "open",
-  "priority": "medium"
+    "id": "UUID",
+    "title": "Issue Title",
+    "description": "Issue Description",
+    "status": "open",
+    "priority": "medium"
 }
 ```
 
 ---
 
-# 📁 Data Persistence
+# 📂 Data Storage
 
-Instead of using a traditional database, this project stores data inside:
+This project intentionally uses **JSON-based persistence** instead of a relational database to focus on FastAPI fundamentals.
+
+Data is stored in:
 
 ```text
 data/issues.json
 ```
 
-The storage layer is responsible for
+The storage layer automatically:
 
-* Reading existing issues
-* Writing updated issues
-* Automatically creating the data directory if it does not exist
-
-This makes the project beginner-friendly while demonstrating data persistence concepts before integrating databases like SQLite, PostgreSQL, or MongoDB.
+* Loads existing records
+* Creates the data directory if missing
+* Writes updates back to the JSON file
 
 ---
 
-# ⚡ Middleware
+# ⚡ Custom Middleware
 
-A custom middleware measures the execution time of every request.
+A custom middleware measures the processing time of every request.
 
-For every API request, the middleware adds the following response header:
+Each response contains:
 
 ```text
 X-Process-Time
@@ -233,47 +202,44 @@ X-Process-Time
 Example:
 
 ```text
-X-Process-Time: 0.003217
+X-Process-Time: 0.00231
 ```
 
-This demonstrates how middleware can intercept requests and responses for logging, monitoring, analytics, and performance measurement.
+---
+
+# 📖 Automatic API Documentation
+
+FastAPI automatically generates OpenAPI documentation.
+
+Swagger UI
+
+```
+/docs
+```
+
+ReDoc
+
+```
+/redoc
+```
 
 ---
 
-# ✔️ Validation
+# ▶️ Running Locally
 
-Input validation is handled using **Pydantic**.
-
-Examples include:
-
-* Required fields
-* Optional fields
-* Minimum and maximum string lengths
-* Enum validation
-* Automatic request parsing
-* Automatic response serialization
-
----
-
-# ▶️ Getting Started
-
-## Clone the Repository
+Clone the repository
 
 ```bash
 git clone https://github.com/KaifullaKazim/Fast-API-Issue-Tracker.git
 ```
 
-Move into the project directory.
+Move into the project
 
 ```bash
 cd Fast-API-Issue-Tracker
 ```
 
----
-
-## Create a Virtual Environment
-
-Windows
+Create a virtual environment
 
 ```bash
 python -m venv env
@@ -281,94 +247,83 @@ python -m venv env
 
 Activate
 
+Windows
+
 ```bash
 env\Scripts\activate
 ```
 
-Linux / macOS
+Linux/macOS
 
 ```bash
-python3 -m venv env
 source env/bin/activate
 ```
 
----
-
-## Install Dependencies
+Install dependencies
 
 ```bash
 pip install -r requirements.txt
 ```
 
----
-
-## Start the Server
+Run the application
 
 ```bash
-uvicorn app.main:app --reload
+fastapi dev main.py
 ```
 
-The server will start at
+or
 
-```text
+```bash
+uvicorn main:app --reload
+```
+
+Visit
+
+```
 http://127.0.0.1:8000
 ```
 
----
-
-# 📖 API Documentation
-
-FastAPI automatically generates interactive API documentation.
-
-Swagger UI
-
-```text
-http://127.0.0.1:8000/docs
-```
-
-ReDoc
-
-```text
-http://127.0.0.1:8000/redoc
-```
+You will automatically be redirected to the interactive Swagger documentation.
 
 ---
 
 # 🎯 Learning Outcomes
 
-This project helped reinforce the following backend development concepts:
+This project demonstrates practical experience with:
 
-* FastAPI fundamentals
-* REST API design
-* CRUD operations
-* Request & response validation
-* Path and query parameters
-* UUID generation
-* Batch API design
-* JSON file persistence
-* Middleware implementation
-* Error handling with HTTP exceptions
-* Project structuring using routers and schemas
+* FastAPI
+* REST API Design
+* CRUD Operations
+* Batch API Design
+* APIRouter
+* Pydantic Models
+* Request Validation
+* Response Models
+* UUID Generation
+* Custom Middleware
+* JSON Data Persistence
+* Error Handling
+* Modular Project Structure
+* Cloud Deployment using Render
 
 ---
 
-# 🔮 Future Improvements
+# 🚀 Future Improvements
 
-Some features planned for future versions include:
-
-* SQLite/PostgreSQL integration
+* SQLite Integration
+* PostgreSQL
 * SQLAlchemy ORM
 * JWT Authentication
-* User Accounts
-* Role-Based Access Control (RBAC)
+* User Registration & Login
+* Role-Based Access Control
 * Pagination
-* Filtering and Searching
-* Sorting
-* Logging
-* Docker Support
+* Filtering
+* Search API
 * Unit Testing with Pytest
-* CI/CD using GitHub Actions
-* Deployment on Render or Railway
+* Docker
+* GitHub Actions CI/CD
+* Logging
+* Rate Limiting
 
 ---
 
@@ -376,6 +331,8 @@ Some features planned for future versions include:
 
 **Mohammed Kaifulla Kazim**
 
-GitHub: **https://github.com/KaifullaKazim**
+🔗 GitHub
 
-If you found this project useful, consider giving it a ⭐ on GitHub!
+https://github.com/KaifullaKazim
+
+If you found this project useful, consider giving it a ⭐ on GitHub.
