@@ -29,6 +29,23 @@ def create_issue(payload: IssueCreate):
     save_data(issues)
     return new_issue
 
+
+'''
+
+# sorting based on the priority
+@router.get("?sort_priority={v1_priority}and{v2_priority}", response_model=IssueOut )
+def sorting_Json(v1_priority: IssuePriority, v2_priority: IssuePriority):
+    issues=list(load_data())
+    if v1_priority ==IssuePriority.HIGH and v2_priority==IssuePriority.LOW:
+        # sorted_issues=sorted(issues, key=lambda x: (x['priority'] == v1_priority, x['priority'] == v2_priority))
+        sorted_issues=sorted(issues, key=lambda x: (x['priority'] == "high", x['priority'] == "medium", x['priority'] == "low"))
+        return sorted_issues
+    else: 
+        return { }
+'''
+
+
+
 # Batch update operation
 @router.put('/Batch')
 async def Batch_put_Operation(payload:Batch_Issue_Update):
@@ -100,6 +117,8 @@ def Batch__Create_operation(payload: Batch_Issue_Create):
         issues.append(new_issue)
         save_data(issues)
     return new_issue
+
+
 
 
 
