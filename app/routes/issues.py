@@ -32,7 +32,7 @@ def create_issue(payload: IssueCreate):
 
 
 # sorting based on the 1 value
-@router.get("/sort")
+@router.get("/sort", response_model=list[IssueOut])
 def sorting_Json_based_on_1_Values(v1_priority: IssuePriority):
     issues=list(load_data())
     sorted_issues=[]
