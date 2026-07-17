@@ -41,19 +41,6 @@ def sorting_Json_based_on_1_Values(v1_priority: IssuePriority):
             sorted_issues.append(d)
     return sorted_issues
 
-'''
-# sorting based on the 2 values
-@router.get("/sort_based _on _two_values", response_model=IssueOut )
-def sorting_Json_based_on_2_Values(v1_priority: IssuePriority, v2_priority: IssuePriority):
-    priority_order={
-        "high":1,
-        "medium":2,
-        "low":3    
-    }
-    issues=list(load_data())
-    sorted_issues = sorted(issues, key=lambda x: priority_order[x['priority']])
-    return sorted_issues
-'''
 
 # Batch update operation
 @router.put('/Batch')
